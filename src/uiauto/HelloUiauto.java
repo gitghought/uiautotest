@@ -16,14 +16,14 @@ public class HelloUiauto extends UiAutomatorTestCase{
 	 * @throws IOException 
 	 * @throws UiObjectNotFoundException 
 	 */
-	public void testOpenLauncherMenu() throws IOException, UiObjectNotFoundException {
+	public void testOpenLauncherTimeMenu() throws IOException, UiObjectNotFoundException {
 		String cmdStr = "monkey -p com.cyanogenmod.trebuchet -v 1";
 		Runtime.getRuntime().exec(cmdStr);
-		UiSelector selector = new UiSelector();
-		selector.className("android.widget.TextView");
-		selector.packageName("com.cyanogenmod.trebuchet");
-		selector.index(2);
-		UiObject obj = new UiObject(selector);
-		obj.click();
+		
+
+		UiSelector  sel = new UiSelector().className("android.widget.RelativeLayout").packageName("com.cyanogenmod.lockclock").index(0).resourceId("com.cyanogenmod.lockclock:id/digital_appwidget");
+		UiObject obj = new UiObject(sel);
+		obj.clickAndWaitForNewWindow();
 	}
+
 }
