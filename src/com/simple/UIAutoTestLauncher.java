@@ -2,6 +2,7 @@ package com.simple;
 
 import java.io.IOException;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiSelector;
@@ -16,9 +17,14 @@ public class UIAutoTestLauncher extends UiAutomatorTestCase{
 	public void testOptionTitle () throws IOException, UiObjectNotFoundException {
 		String cmdStr = "monkey -p com.cantv.launcher -v 1";
 		Runtime.getRuntime().exec(cmdStr);
+		
+		UiDevice dev = UiDevice.getInstance();
+		dev.pressHome();
 
-		//UiSelector  sel = new UiSelector().className("android.widget.RelativeLayout").packageName("com.cyanogenmod.lockclock").index(0).resourceId("com.cyanogenmod.lockclock:id/digital_appwidget");
+//		UiSelector  sel = new UiSelector().className("android.widget.RelativeLayout").packageName("com.cantv.launcher").resourceId("com.cantv.launcher:id/main_bar");
 //		UiObject obj = new UiObject(sel);
-//		obj.clickAndWaitForNewWindow();
+//		int num = obj.getChildCount();
+//		System.out.println("num = " + num);
 	}
+	
 }
