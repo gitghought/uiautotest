@@ -26,4 +26,19 @@ public class UIAutoTestCanApp extends UiAutomatorTestCase{
 		.getChildByInstance(new UiSelector().className("android.widget.RelativeLayout"), 0);
 		assertTrue(subObj.isFocused());
 	}
+
+	/**
+	 * 获取选项卡中所有对象
+	 * @throws IOException
+	 * @throws UiObjectNotFoundException
+	 * @throws InterruptedException
+	 */
+	public void testGetAllChildObject() throws IOException, UiObjectNotFoundException, InterruptedException {
+		String cmdStr = "monkey -p com.can.appstore -v 1";
+		Process prop = Runtime.getRuntime().exec(cmdStr);
+		
+		UiObject obj = new UiCollection(new UiSelector().resourceId("com.can.appstore:id/id_indicator"));
+		int count = obj.getChildCount();
+		System.out.println("count  = "  + count);
+	}
 }
