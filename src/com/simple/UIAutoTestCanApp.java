@@ -2,6 +2,7 @@ package com.simple;
 
 import java.io.IOException;
 
+import com.android.uiautomator.core.UiCollection;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -20,13 +21,9 @@ public class UIAutoTestCanApp extends UiAutomatorTestCase{
 		UiObject obj = new UiObject(sel);
 		obj.waitForExists(3);
 		int num = obj.getChildCount();
-		System.out.println("num = " + num);
-		UiSelector subSel = new UiSelector().className("android.widget.RelativeLayout").packageName("com.can.appstore").text("еепп");
-
-		UiSelector rSel = sel.childSelector(subSel);
-
-		UiObject subObj = obj.getChild(rSel);
-
-		subObj.click();
+		
+		UiObject subObj = new UiCollection(new UiSelector().resourceId("com.can.appstore:id/id_indicator"))
+		.getChildByInstance(new UiSelector().className("android.widget.RelativeLayout"), 0);
+		assertTrue(subObj.isFocused());
 	}
 }
